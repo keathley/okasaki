@@ -1,4 +1,4 @@
-module FP where
+module FP exposing (..)
 
 import List   -- TODO: modify imports if you'd like
 
