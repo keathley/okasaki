@@ -1,4 +1,4 @@
-module Pi exposing (..)
+module Pi where
 
 import Random
 import Signal
