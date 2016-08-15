@@ -5,9 +5,9 @@ import String
 
 digitsOfInt : Int -> List Int
 digitsOfInt n =
-  case n of
-  n -> toString n |> String.split |> List.map String.toInt
-  _ -> []
+  toString n 
+  |> String.split "" 
+  |> List.map (Result.withDefault 0 << String.toInt)
 
 additivePersistence : Int -> Int
 additivePersistence n =
