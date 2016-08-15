@@ -1,11 +1,13 @@
 module FP where
 
-import List   -- TODO: modify imports if you'd like
+import List
+import String
 
 digitsOfInt : Int -> List Int
 digitsOfInt n =
-  -- TODO
-  []
+  case n of
+  n -> toString n |> String.split |> List.map String.toInt
+  _ -> []
 
 additivePersistence : Int -> Int
 additivePersistence n =
