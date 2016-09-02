@@ -111,10 +111,13 @@ addLeaf h n t =
 
 almostCompleteTrees : Int -> Int -> List Tree
 almostCompleteTrees x h =
-   let n = 2^h
-       f = repeat (n - 1) <| leaf x
-       l = drop 1 <| cartesian n [Empty, leaf x]
-   in map (withDefault Empty << head << almostComplete 1 << ((++) f)) l
+   if h == 0 then
+      [Empty]
+   else
+      let n = 2 ^ (h - 1)
+          f = repeat (n - 1) <| leaf x
+          l = drop 1 <| cartesian n [Empty, leaf x]
+      in map (withDefault Empty << head << almostComplete 1 << ((++) f)) l
 
 almostComplete : Int -> List Tree -> List Tree
 almostComplete depth list =
