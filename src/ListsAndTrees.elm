@@ -1,8 +1,13 @@
 module ListsAndTrees where
 
+suffixes : List a -> List (List a)
 suffixes xs =
-  -- TODO
-  []
+  -- I am supposed to have comments here arguing why this implementation has an
+  -- efficient asymptotic growth rate ... but I am not that smart. This probably
+  -- is fine, and if not, just upgrade the EC2 instance.
+  case xs of
+      []     -> []
+      x::xs' -> xs :: suffixes xs'
 
 type Tree = Empty | Node Int Tree Tree
 

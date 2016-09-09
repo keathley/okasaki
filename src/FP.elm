@@ -1,11 +1,17 @@
 module FP where
 
 import List   -- TODO: modify imports if you'd like
+-- import Arithmatic
 
 digitsOfInt : Int -> List Int
-digitsOfInt n =
+digitsOfInt n = case n of
+                n == 0 -> n
+                _ -> let t = n % 10
+                           h = n // 10
+                           in
+                               (digitsOfInt h)::t
   -- TODO
-  []
+  -- []
 
 additivePersistence : Int -> Int
 additivePersistence n =
