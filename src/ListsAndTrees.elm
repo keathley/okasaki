@@ -37,14 +37,14 @@ leaf x = Node x Empty Empty
 
 mem : Int -> Tree -> Bool
 mem x t =
-   case t of
-      Empty      ->  False
-      Node y l r ->  if x < y then
-                        mem x l
-                     else if x > y then
-                        mem x r
-                     else
-                        True
+   let memc t c = case (t, c) of
+                     (Empty, Empty)       -> False
+                     (Empty, Node y _ _)  -> x == y
+                     (Node y l r, _)      -> if x < y then
+                                                memc l c
+                                             else
+                                                memc r t
+   in memc t Empty
 
 fullTree : Int -> Int -> Tree
 fullTree x h =
