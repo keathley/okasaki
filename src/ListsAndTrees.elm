@@ -22,9 +22,10 @@ mem x t =
             else {- x > y -}   mem x right
 
 fullTree : Int -> Int -> Tree
-fullTree _ _ =
-  -- TODO
-  Empty
+fullTree x h =
+  -- *should* run in O(h) time?
+    if h < 1 then  Empty
+    else  Node x (fullTree x (h - 1)) (fullTree x (h - 1))
 
 balancedTree : Int -> Int -> Tree
 balancedTree _ _ =
