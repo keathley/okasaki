@@ -28,9 +28,13 @@ fullTree x h =
     else  Node x (fullTree x (h - 1)) (fullTree x (h - 1))
 
 balancedTree : Int -> Int -> Tree
-balancedTree _ _ =
-  -- TODO
-  Empty
+balancedTree x n =
+  -- I didn't use the helper function because I couldn't figure out how to use
+  -- it the way that the instructions intended.
+  if n < 1           then Empty
+  else if n % 2 == 0 then
+           Node x (balancedTree x ((n - 1)// 2)) (balancedTree x (n // 2))
+  else Node x (balancedTree x ((n - 1) // 2)) (balancedTree x ((n - 1) // 2))
 
 create2 : Int -> Int -> (Tree, Tree)
 create2 _ _ =
