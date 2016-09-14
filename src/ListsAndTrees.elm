@@ -12,9 +12,14 @@ suffixes xs =
 type Tree = Empty | Node Int Tree Tree
 
 mem : Int -> Tree -> Bool
-mem _ _ =
-  -- TODO
-  False
+mem x t =
+  -- h+1 comparisons for this member function, where h is the height.
+    case t of
+        Empty -> False
+        Node y left right ->
+            if x == y then     True
+            else if x < y then mem x left
+            else {- x > y -}   mem x right
 
 fullTree : Int -> Int -> Tree
 fullTree _ _ =
