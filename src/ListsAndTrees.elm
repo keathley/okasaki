@@ -12,31 +12,26 @@ mem _ _ =
   False
 
 fullTree : Int -> Int -> Tree
-fullTree _ _ =
-  -- TODO
-  Empty
+fullTree x h =
+  if h < 1 then
+      Empty
+  else
+      let s = fullTree x (h - 1) in
+      Node x s s
 
 balancedTree : Int -> Int -> Tree
-balancedTree _ _ =
-  -- TODO
-  Empty
+balancedTree x n =
+  if n < 1 then
+      Empty
+  else if n == 1 then
+      Node x Empty Empty
+  else if (n % 2) == 1 then
+      let s = balancedTree x (n // 2) in
+      Node x s s
+  else
+      let (l, r) = create2 x ((n - 1) // 2) in
+      Node x l r
 
 create2 : Int -> Int -> (Tree, Tree)
-create2 _ _ =
-  -- TODO
-  (Empty, Empty)
-
-balancedTrees : Int -> Int -> List Tree
-balancedTrees _ _ =
-  -- TODO
-  []
-
-completeTrees : Int -> Int -> List Tree
-completeTrees _ _ =
-  -- TODO
-  []
-
-almostCompleteTrees : Int -> Int -> List Tree
-almostCompleteTrees _ _ =
-  -- TODO
-  []
+create2 x m =
+  (balancedTree x m, balancedTree x (m + 1))
