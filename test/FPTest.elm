@@ -28,4 +28,6 @@ tests =
             defaultTest <| assertEqual (Err ("not enough elements"))
                 (take 10 [1..9]),
             defaultTest <| assertEqual (Err ("negative index"))
-                (take -10 [1..9])]]
+                (take -10 [1..9])
+            ]
+        ]
