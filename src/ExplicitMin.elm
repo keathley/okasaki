@@ -7,9 +7,8 @@ module ExplicitMin
 import BinomialHeaps as H
 -- import LeftistHeaps as H
 
-type Heap =
-       E
-     | NE Int H.Heap   -- the Int is the minimum element
+type Heap = E
+          | NE Int H.Heap   -- the Int is the minimum element
 
 empty : Heap
 empty = E
@@ -38,4 +37,3 @@ deleteMin : Heap -> Maybe Heap
 deleteMin _ =
   -- TODO
   Nothing
-

@@ -37,4 +37,3 @@ deleteMin : Heap -> Maybe Heap
 deleteMin h =
   -- TODO
   Nothing
-
