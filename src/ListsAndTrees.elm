@@ -1,25 +1,37 @@
 module ListsAndTrees where
 
-suffixes xs =
-  -- TODO
-  []
+-- Runs in O(n) time because suffixes is called exactly once for each x in xs
+-- Runs in O(n) memory because no state is retained except xs and suffixes
+
+suffixes : List a -> List (List a)
+suffixes xs = case xs of
+  [] -> [[]]
+  x :: suffix -> xs :: suffixes suffix
 
 type Tree = Empty | Node Int Tree Tree
 
 mem : Int -> Tree -> Bool
-mem _ _ =
-  -- TODO
-  False
+mem x t = case t of
+  Empty -> False
+  Node n left right ->
+      if x < n then
+          mem x left
+      else
+          mem x right || x == n
 
 fullTree : Int -> Int -> Tree
-fullTree _ _ =
-  -- TODO
-  Empty
+fullTree x h =
+  if h <= 0 then
+      Empty
+  else let leaf = (fullTree x (h - 1)) in
+      Node x leaf leaf
 
 balancedTree : Int -> Int -> Tree
-balancedTree _ _ =
-  -- TODO
-  Empty
+balancedTree x h =
+  if h <= 0 then
+      Empty
+  else Node x (balancedTree x <| (h - 1) // 2)
+              (balancedTree x <| (h - 1) // 2 + (h - 1) % 2)
 
 create2 : Int -> Int -> (Tree, Tree)
 create2 _ _ =
