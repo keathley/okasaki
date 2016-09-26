@@ -32,8 +32,20 @@ merge h1 h2 = case (h1, h2) of
 
 {------------------------------------------------------------------------}
 
-fromList : List Int -> Heap
-fromList _ =
-  -- TODO
-  E
+mergePairs : List Heap -> List Heap
+mergePairs xs =
+    case xs of
+        [] -> []
+        [x] -> [x]
+        x0::x1::xs -> merge x0 x1 :: mergePairs xs
 
+makePass : List Heap -> List Heap
+makePass xs =
+    let hs = mergePairs xs in
+    case hs of
+        [] -> []
+        [h] -> [h]
+        h::hs -> makePass (h::hs)
+
+fromList : List Int -> Heap
+fromList = List.map (\x -> makeT x E E) >> makePass >> List.head >> Maybe.withDefault E
