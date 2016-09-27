@@ -6,11 +6,14 @@ import String
 
 digitsOfInt : Int -> List Int
 digitsOfInt n =
-  if n > 0 then
-    case n of
-      0 -> []
-      _ -> digitsOfInt (n // 10) ++ [n % 10]
+  case n of
+    0 -> [0]
+    _ -> splitIntoDigits n
 
+splitIntoDigits : Int -> List Int
+splitIntoDigits n =
+  if n > 0 then
+    splitIntoDigits (n // 10) ++ [n % 10]
   else
     []
 

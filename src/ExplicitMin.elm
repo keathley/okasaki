@@ -1,5 +1,5 @@
 module ExplicitMin
-  (Heap, empty, isEmpty, findMin, insert, deleteMin, merge) where
+  (Heap, empty, isEmpty, findMin, insert, deleteMin, merge) exposing (..)
 
 -- NOTE: without functors or type classes, we would manually swap in
 -- different implementations of H by twiddling the following imports

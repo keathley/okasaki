@@ -1,5 +1,5 @@
 module BHeaps
-  (Heap, empty, isEmpty, findMin, insert, deleteMin, merge) where
+  (Heap, empty, isEmpty, findMin, insert, deleteMin, merge) exposing (..)
 
 type Tree = Node Int (List Tree)
 type alias Rank = Int

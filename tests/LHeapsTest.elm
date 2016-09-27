@@ -1,17 +1,18 @@
-module LHeapsTest where
+module LHeapsTest exposing (..)
 
-import ElmTest exposing (..)
+import Test exposing (..)
+import Expect
 import List exposing (sort)
 
 import LHeaps exposing (..)
 
 tests : Test
 tests =
-    suite "Homework 3" [
-         suite "3.1.1" [
-              defaultTest <| assertEqual E (fromList []),
-              defaultTest <| assertEqual (T 1 1 E E) (fromList [1]),
-              defaultTest <| assertEqual
+    describe "Homework 3" [
+         describe "3.1.1" [
+              test "foo" <| \() -> Expect.equal E (fromList []),
+              test "foo" <| \() -> Expect.equal (T 1 1 E E) (fromList [1]),
+              test "foo" <| \() -> Expect.equal
                   (T 2 1
                        (T 2 4
                           (T 2 5

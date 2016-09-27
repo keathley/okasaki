@@ -1,5 +1,5 @@
 module LHeaps exposing
-  ( Heap
+  ( Heap(..)
   , singleton
   , fromList
   , empty

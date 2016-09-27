@@ -1,14 +1,13 @@
-module Tests where
+module Tests exposing (all)
 
-import ElmTest exposing (..)
-
+import Test exposing (..)
 import FPTest
 import ListsAndTreesTest
 import LHeapsTest
 
 all : Test
 all =
-    suite "Homework Problems"
+    describe "Homework Problems"
         [
          -- HW 1
             FPTest.tests,
