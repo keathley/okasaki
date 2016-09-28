@@ -7,11 +7,37 @@ module LHeaps exposing
   , findMin
   , insert
   , deleteMin
+  , size
+  , value
+  , rank
+  , left
+  , right
   )
 
 type alias Rank = Int
 
 type Heap = E | T Rank Int Heap Heap
+
+value h =
+  case h of
+    E         -> 10000000000 -- Arbitrarily large number
+    T _ i _ _ -> i
+
+left h =
+  case h of
+    E         -> E
+    T _ _ a _ -> a
+
+right h =
+  case h of
+    E         -> E
+    T _ _ _ b -> b
+
+size : Heap -> Int
+size h =
+  case h of
+    E         -> 0
+    T _ _ a b -> 1 + size a + size b
 
 rank : Heap -> Rank
 rank h =
