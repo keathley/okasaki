@@ -15,9 +15,7 @@ empty : Heap
 empty = E
 
 isEmpty : Heap -> Bool
-isEmpty _ =
-  -- TODO
-  False
+isEmpty h = h == empty
 
 insert : Int -> Heap -> Heap
 insert _ _ =
@@ -25,17 +23,21 @@ insert _ _ =
   E
 
 merge : Heap -> Heap -> Heap
-merge _ _ =
-  -- TODO
-  E
+merge h1 h2 = case (h1, h2) of
+  (E, h2') -> h2'
+  (h1', E) -> h1'
+  ((NE m1 h1'), (NE m2 h2')) ->
+    if m1 <= m2 then
+      NE m1 <| H.merge h1' h2'
+    else
+      NE m2 <| H.merge h1' h2'
 
 findMin : Heap -> Maybe Int
-findMin _ =
-  -- TODO
-  Nothing
+findMin h = case h of
+  E -> Nothing
+  (NE m _) -> Just m
 
 deleteMin : Heap -> Maybe Heap
-deleteMin _ =
-  -- TODO
-  Nothing
-
+deleteMin h = case h of
+  E -> Nothing
+  (NE m h) -> Just <| NE (H.findMin h) <| H.deleteMin h
